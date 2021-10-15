@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: Photos Gallery API
+  description: Simple API for photos gallery
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+    description: Dev servers
+
+components:
+  schemas:
+    Photos:
+      type: object
+      properties:
+        title:
+          type: string
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              fileName:
+                type: string
+              filePath:
+                type: string
+              fileType:
+                type: string
+              fileSize:
+                type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+              
+
+paths:
+  /api/get:
+    get:
+      summary: Return a list of photos 
+      description: Return a list a photos uploaded in the servers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photos'
+        '404':
+          description: 'Not Found'
+        '500':
+          description: Some Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/add:
+    post:
+      summary: Upload photos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Photos'
+      responses:
+        '200':
+          description: Photos Uploaded Successfully
+        '404':
+          description: 'Not Found'
+        '500':
+          description: Some Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

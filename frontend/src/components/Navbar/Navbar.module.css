@@ -1,0 +1,46 @@
+
+.header {
+    width: 100%;
+    height: 8rem;
+    background-color: #219ebc;
+    margin-bottom: 2rem;
+}
+
+.nav {
+    width: 90%;
+    height:8rem;
+    margin:auto;
+    display: flex;
+}
+
+.nav__logo {
+    width: 6rem;
+    height:6rem;
+    margin: 1rem;
+    animation-name: rotation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.nav__name {
+    font-family: 'Gemunu Libre', sans-serif;
+    letter-spacing: 0.5rem;
+    line-height: 8rem;
+    font-size: 3rem;
+    margin: 0 0 0 2rem;
+    color: #fff;
+    animation: beat .25s infinite alternate;
+}
+
+@keyframes rotation {
+    from {
+        transform:rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
